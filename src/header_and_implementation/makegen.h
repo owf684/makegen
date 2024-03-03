@@ -2,7 +2,7 @@
 #ifndef MAKEFILE
 #define MAKEFILE
 
-#include "qadon-1.0.0/qadon.h"
+#include <qadon.h>
 #include <fstream>
 #include <iostream>
 #include <map>
