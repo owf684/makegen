@@ -215,6 +215,8 @@
             new_makefile << "\t $(CXX) $(CXXFLAGS) $(LDFLAGS) -c " + pair.second+pair.first + " -o " + get_build_directory() + source_file_name+".o\n\n";
         }
 
+        new_makefile << "clean: " << std::endl;
+        new_makefile << "\t rm -f " + get_build_directory() + "*.o " + get_build_name();
         new_makefile.close();
 
     }
@@ -372,33 +374,23 @@
         }
     }
 
-    int main()
-    {
 
-        Makefile test;
-        /*
-        // setup make file config
-        test.set_compiler("g++");
-        test.set_build_name("makegen_test");
-        test.set_main_file_name("main.cpp");
-        test.set_main_file_directory("./testing");
-        test.set_build_directory("./");
-        test.add_cxx_flag("std=c++20");
-        test.add_ld_flag("stdc++");
-        test.add_ld_flag("SDL2");
-        
-        // setup source file config
-        test.add_source_file("example.h", "./testing");
-        test.add_source_file("another_example.cpp", "./testing");
-        test.generate_make_config();
-        test.generate_source_config();
-        */
-        test.read_config("./","print_util");
 
-        test.generate_make_file();
+
+/*
+int main(int argc, char *argv[])
+{
+
+    Makefile new_makefile;
+    std::cout << "=======================================================" << std::endl;
+    std::cout << "building makefile from build: " << argv[2] << std::endl;
+    std::cout << "located in directory: " << argv[1] << std::endl;
+    std::cout << "=======================================================" << std::endl;
+
+    new_makefile.read_config(argv[1],argv[2]);
+
+    new_makefile.generate_make_file();
        
         
-      return 0;
-    }
-
-
+    return 0;
+}*/
