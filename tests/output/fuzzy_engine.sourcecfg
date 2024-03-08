@@ -1,0 +1,14 @@
+{
+collider_component.cpp : ./includes/components/
+sprite_component.cpp : ./includes/components/
+test_platform.cpp : ./game_data/objects/environment_objects/
+fuzzy_engine_interface.cpp : ./includes/shared_memory/
+bird.cpp : ./game_data/objects/player_object/
+input_engine.cpp : ./includes/engines/
+physics_engine.cpp : ./includes/engines/
+physics_component.cpp : ./includes/components/
+sprite_engine.cpp : ./includes/engines/
+graphics_engine.cpp : ./includes/engines/
+game_object.cpp : ./includes/objects/
+collision_engine.cpp : ./includes/engines/
+}
