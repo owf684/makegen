@@ -1,0 +1,9 @@
+{
+cxx_flags : CXXFLAGS=  -std=c++20
+ld_flags: LDFLAGS= -lstdc++ -lSDL2
+main_file_directory : ./
+main_file_name : main.cpp
+build_directory : ./build/
+build_name : fuzzy_engine
+cxx : g++
+}
