@@ -136,8 +136,13 @@ public:
   }
 
   // generators
-  void generate_make_config()
+  void generate_make_config(std::string output_directory)
   {
+    if (!output_directory[output_directory.size()-1] =='/')
+    {
+      output_directory += '/';
+    } 
+
      qadon make_file_config;
 
         make_file_config["cxx"] = get_compiler();
@@ -159,11 +164,16 @@ public:
             LDFLAGS += " -"+flags;
         }
 
-        make_file_config.write(get_build_name() + ".makecfg");
+        make_file_config.write( output_directory + get_build_name() + ".makecfg");
   }
 
-  void generate_source_config()
+  void generate_source_config(std::string output_directory)
   {
+    if (!output_directory[output_directory.size()-1] =='/')
+    {
+      output_directory += '/';
+    } 
+
     qadon source_file_config;
 
     for(const auto& pair : source_files)
@@ -171,12 +181,17 @@ public:
         source_file_config[pair.first] = pair.second;
     }
 
-        source_file_config.write(get_build_name() + ".sourcecfg");
+        source_file_config.write( output_directory + get_build_name() + ".sourcecfg");
   }
 
-  void generate_make_file()
+  void generate_make_file(std::string output_directory)
   {
-        std::ofstream new_makefile("Makefile");
+        if (!output_directory[output_directory.size()-1] =='/')
+        {
+          output_directory += '/';
+        } 
+
+        std::ofstream new_makefile( output_directory + "Makefile");
 
         // writing CXX
         new_makefile << "CXX= " << get_compiler() << "\n";
@@ -273,7 +288,7 @@ public:
   // parsers
   void parse_cxxflags(std::string cxx_flags_in)
   {
-           // iterate through cxx flags
+        // iterate through cxx flags
         std::string parsed_string = "";
         bool end_of_var_name = false;
         bool f = false;
